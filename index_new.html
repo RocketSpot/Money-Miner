@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- FIX SAVING + BTC -->
+<html>
+  <head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <title>Miner</title>
+   <link rel="stylesheet" type="text/css" href="style.css"/>
+   <script>
+        var example = ['$1,000,000,000,000', '&pound;1,000,000,000,000'];
+
+        textSequence(0);
+        function textSequence(i) {
+
+            if (example.length > i) {
+                setTimeout(function() {
+                    document.getElementById("sequence").innerHTML = example[i];
+                    textSequence(++i);
+                }, 1000); // 1 second (in milliseconds)
+
+            } else if (example.length == i) { // Loop
+                textSequence(0);
+            }
+
+        }
+        
+    </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+   <body>
+<div class="w3-container">
+        <center>
+          <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+         <h2><i class="fas fa-user-tie"></i> Miner</h2>
+         <p style="font-size:18px;">Run a business, win customers and become the world's first trillionaire! <br><br>Reach <b><span id="sequence">$1,000,000,000,000</span></b> to win!</p>
+         <br>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal1">
+  Game on!
+</button>
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal2">
+  How to play...
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><font color="black"><i class="fas fa-user-tie"></i> Miner</font></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--<form onsubmit="return checkSave();">-->
+          <div class="form-group">
+                  <label for="name">Choose A Company Name:</label>
+                   <input type="name" class="form-control" id="name"  placeholder="CookieGames" required>
+          </div>
+          <div class="form-group">
+                  <label for="currency">Select Game Currency:</label>
+                  <select class="form-control" id="currency" required>
+                    <!-- <option nameid="1" value="btc" disabled>Bitcoin (temporarily disabled)</option> -->
+                     <option nameid="2" value="usd">USD</option>
+                     <option nameid="3" value="gbp">GBP</option>
+                  </select>
+          </div>
+          <div class="form-group">
+                  <label for="industry">Select Company Industry:</label>
+                  <select id="industry" class="form-control" required>
+                     <option nameid="1" value="tech">Tech</option>
+                     <option nameid="2"  value="tpt">Transport</option>
+                     <option nameid="3" value="fd">Food</option>
+                  </select>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!--<input type="submit" value="Game on!" class="btn btn-primary">-->
+        <button type="button" class="btn btn-primary" onclick="checkSave();">Game on!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+          </center>
+<!-- Modal3 -->
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><font color="black"><i class="fas fa-user-tie"></i> Miner</font></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><font color="black">It seems like you've played before. Would you like to continue with your
+          save? Note: saving is in beta and some progress may be missing.</font></p>
+        <form action="game.html">
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="deleteSave();">No</button>
+        <input type="submit" value="Yes" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function checkSave(){
+  var myInput = document.getElementById("name");
+if (myInput && myInput.value) {
+   if (localStorage.getItem("money") === null) {
+    window.location.replace("game.html");
+  }
+  else{
+    //$("#modal3").modal();
+    //$('#modal1').modal('hide')
+
+    window.location.replace("game.html");
+  }
+}
+else{
+  alert("Please fill in all fields");
+}
+}
+
+function deleteSave(){
+  localStorage.setItem("money", 0);
+  window.location.replace("game.html");
+}
+</script>
+<!-- Modal -->
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><font color="black"><i class="fas fa-user-tie"></i> Miner</font></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <font color="black">
+               <p>The aim of the game is to earn 1 trillion GBP/USD (250 million BTC).</p>
+               <p>Your money, money per second, fans and satisfaction are displayed in the top right corner. 
+                 <br><br>'<b>Money per second</b>' is how much money is added to your virtual balance every second. <br><br>Fans and 
+                 satisfaction</b>
+                 affect your '<b>monthly bonus</b>', an in-game cash bonus you get every 2 minutes - the higher the amount of <b>fans</b> and <b>satisfaction</b>, the bigger the bonus will be &#128176;. <br><br>You can also raise the price of products, which will increase your cash per second but decrease your fans/satisfaction (this could cause you to receive a negative monthly bonus &#128577;). <br><br>You can release a <b>new model</b>(the green button below product name) of your products which will increase cash per second. <br><br>To release new products, you need to find more out about them. You can <b>research</b> a product by selecting which one you want to research using the dropdown at the top of the page and then clicking "Research".<br><br> Have fun! &#129297;</p>
+               </font>
+              
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ <center>
+         <p id="footer">Miner v2.0.0 by RocketSpot and SqLoSt. View the changelog <a href="changelog.html">here</a> and the credits <a href="credits.html">here</a>.</p>
+         </center>
+         
+      </div>
+      </div>
+          <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      $('#currency').change(function() {
+                         localStorage.setItem('currency', this.value);
+                            return;
+                        });
+
+	                    $('#industry').change(function() {
+                             localStorage.setItem('industry', this.value);
+
+	                             return;
+
+                         });
+                         
+                      $('#name').change(function() {
+                        localStorage.setItem('name', this.value)
+                        return;
+                     }); 
+                     </script>
+   </body>
+</html>

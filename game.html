@@ -1,0 +1,295 @@
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<script src="game.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+   /* Paste this css to your style sheet file or under head tag */
+   /* This only works with JavaScript, 
+   if it's not present, don't show loader */
+   .no-js #loader { display: none;  }
+   .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+   .se-pre-con {
+   position: fixed;
+   left: 0px;
+   top: 0px;
+   width: 100%;
+   height: 100%;
+   z-index: 9999;
+   background: url(coin.gif) center no-repeat #fff;
+   }
+</style>
+<body id="body">
+   <div class="se-pre-con" id="loading"></div>
+   <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="header">Modal title</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal();">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div id="modal-body" class="modal-body">
+               <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal();">Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+      <a class="navbar-brand" href="#"><img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" id="myImg" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a class="navbar-brand" id="name" href="#">Name</a>
+            </li>
+            <li class="nav-item active" id="productsNav">
+               <a class="nav-link" href="#" onclick="products();">Products <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" id="settingsNav">
+               <a class="nav-link" href="#" onclick="settings();">Settings</span></a>
+               </li>
+            <li class="nav-item" id="graphsNav">
+               <a class="nav-link" href="#" onclick="graphs();">Graphs</a>
+               </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+               <a class="nav-link" id="money" href="#">$0</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" id="cps" href="#">$1/s</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" id="fans" href="#">1 Fan</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" id="satisfaction" href="#">100 Satisfaction</a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+
+   <div id="products">
+<div class="container">
+   <h4>Research:</h4>
+   <select class="form-control" id="research" name="option">
+      <option value="0" disabled selected>Research product</option>
+      <option id="research1" value="1">Computers ($1,000)</option>
+      <option id="research2" value="2">Tablets ($1,500)</option>
+      <option id="research3" value="3">Smart Speakers ($2,000)</option>
+      <option value="4" disabled>More coming soon</option>
+   </select>
+   <br style="line-height: 10px" />
+   <button onclick="researchfunc();" id="goresearch" class="btn btn-success" >Research</button>
+   <h4>Products:</h4>
+   <div class="container">
+      <div class="row">
+         <div class="col-sm">
+            <div class="card" id="container1">
+               <div class="card-header">
+                  <center>
+                     <i class="fas fa-mobile-alt" id="phoneicon" style="display: inline-block;"></i>
+                     <i class="fas fa-key" id="keyicon" style="display: inline-block;"></i>
+                     <i class="fas fa-utensils" id="utensil" style="display: inline-block;"></i>
+                     <p id="product1" style="display: inline-block;">
+                       <font color="black"> Phone </font>
+                     </p>
+                  </center>
+               </div>
+               <div class="card-body">
+                  <center>
+                     <p id="lvl">Level 1</p>
+                  </center>
+                  <button id="model" class="btn btn-success" style="width:100%" onclick="newmodel();">Release New Model ($50)</button>
+                  <br>
+                  <br>
+                  <br>
+                  <button id="rise" class="btn btn-danger" style="width:100%" onclick="raiseprice();">Raise price</button>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="card" id="container2">
+               <div class="card-header">
+                  <center>
+                     <i class="fas fa-tablet-alt" id="tableticon" style="display: inline-block;"></i>
+                     <i class="fas fa-car" id="caricon" style="display: inline-block;"></i>
+                     <i class="fas fa-store" id="cateringicon" style="display: inline-block;"></i>
+                     <p id="product2" style="display: inline-block;">
+                        Tablet
+                     </p>
+                  </center>
+               </div>
+               <div class="card-body">
+                  <center>
+                     <p id="lvl2">Level 1</p>
+                  </center>
+                  <button id="model2" class="btn btn-success" style="width:100%" onclick="newmodel1();">Release New Model ($50)</button>
+                  <br>
+                  <br>
+                  <br>
+                  <button id="rise" class="btn btn-danger" style="width:100%" onclick="raiseprice();">Raise price</button>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="card" id="container3">
+               <div class="card-header">
+                  <center>
+                     <i class="fas fa-desktop" id="computericon" style="display: inline-block;"></i>
+                     <i class="fas fa-train" id="trainicon" style="display: inline-block;"></i>
+                     <i class="fas fa-clipboard-list" id="blogicon" style="display: inline-block;"></i>
+                     <p id="product3" style="display: inline-block;">
+                        Computers
+                     </p>
+                  </center>
+               </div>
+               <div class="card-body">
+                  <center>
+                     <p id="lvl3">Level 1</p>
+                  </center>
+                  <button id="model3" class="btn btn-success" style="width:100%" onclick="newmodel2();">Release New Model ($50)</button>
+                  <br>
+                  <br>
+                  <br>
+                  <button id="rise" class="btn btn-danger" style="width:100%" onclick="raiseprice();">Raise price</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   
+<div class="container">
+      <div class="row">
+   <div class="col-sm">
+            <div class="card" id="container4">
+               <div class="card-header">
+                  <center>
+                     <i class="fas fa-volume-up" id="speakericon" style="display: inline-block;"></i>
+                     <i class="fas fa-charging-station" id="electricicon" style="display: inline-block;"></i>
+                     <i class="fas fa-truck-loading" id="delivericon" style="display: inline-block;"></i>
+                     <p id="product4" style="display: inline-block;">
+                        Smart Speakers
+                     </p>
+                  </center>
+               </div>
+               <div class="card-body">
+                  <center>
+                     <p id="lvl4">Level 1</p>
+                  </center>
+                  <button id="model4" class="btn btn-success" style="width:100%" onclick="newmodel2();">Release New Model ($50)</button>
+                  <br>
+                  <br>
+                  <br>
+                  <button id="rise" class="btn btn-danger" style="width:100%" onclick="raiseprice();">Raise price</button>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+   </div>
+</div>
+   <div id="graphs">
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <div id="curve_chart" style="width:auto; height: 500px"></div>
+
+<script>
+   google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Money made',],
+          ['1',  month1earnings],
+          ['2',  month2earnings],
+          ['3',  month3earnings],
+          ['4',  month4earnings],
+          ['5',  month5earnings],
+          ['6',  month6earnings],
+          ['7',  month7earnings],
+          ['8',  month8earnings],
+          ['9',  month9earnings],
+          ['10',  month10earnings],
+          ['11',  month11earnings],
+          ['12',  month12earnings]
+
+        ]);
+
+        var options = {
+          title: 'Money made (per month)',
+          curveType: 'function',
+          legend: { position: 'bottom' },
+          colors: ['#0de00d']
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+</script>
+
+       <button onclick="graphs();">Reload graph</button>
+<p id="month">Current month:</p>
+     </div>
+
+    <div id="settings">
+  <label for="currencyfield">Change game currency:</label>
+                  <select class="form-control" id="currencyfield" onchange="changeCurrency();" required>
+                     <option nameid="1" value="btc">Bitcoin</option>
+                     <option nameid="2" value="usd">USD</option>
+                     <option nameid="3" value="gbp">GBP</option>
+                  </select>
+            <label for="navbarcolor">Change top bar colour:</label>
+                  <select class="form-control" id="navbarcolor" onchange="changeNavbar();" required>
+                     <option nameid="1" value="drk">Dark</option>
+                     <option nameid="2" value="lgt">Light</option>
+                     <option nameid="3" value="prm">Blue</option>
+                  </select>
+                  <label for="bgcolor">Change theme:</label>
+                  <select class="form-control" id="bgcolor" onchange="changeBG();" required>
+                     <option nameid="1" value="lgt" selected="selected">Light</option>
+                     <option nameid="2" value="drk">Dark (beta)</option>
+                  </select>
+  <label for="namefield">Change company name (click outside field to submit):</label>
+                   <input type="name" class="form-control" id="namefield" onchange="changeName(this.value)" placeholder="CookieGames" required>
+      </div>
+    
+
+   <!--FALLING DOLLAR TEXT-->
+   <marquee style="z-index:-1;width:100px;position:absolute;left:1459.2px;top:73px;font-family:Verdana;font-size:18px;color:#24FF1C;height:49px;"scrollamount="1" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:1382.4px;top:70px;font-family:Verdana;font-size:18px;color:#24FF1C;height:204px;"direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:1305.6000000000001px;top:15px;font-family:Verdana;font-size:18px;color:#24FF1C;height:909px;"scrollamount="3" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:1228.8000000000002px;top:63px;font-family:Verdana;font-size:18px;color:#24FF1C;height:796px;"scrollamount="4" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:1152.0000000000002px;top:30px;font-family:Verdana;font-size:18px;color:#24FF1C;height:29px;"scrollamount="5" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:1075.2000000000003px;top:14px;font-family:Verdana;font-size:18px;color:#24FF1C;height:57px;"direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:998.4000000000003px;top:102px;font-family:Verdana;font-size:18px;color:#24FF1C;height:538px;"scrollamount="4" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:921.6000000000004px;top:36px;font-family:Verdana;font-size:18px;color:#24FF1C;height:534px;"scrollamount="7" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:844.8000000000004px;top:96px;font-family:Verdana;font-size:18px;color:#24FF1C;height:372px;"scrollamount="5" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:768.0000000000005px;top:18px;font-family:Verdana;font-size:18px;color:#24FF1C;height:412px;"scrollamount="7" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:691.2000000000005px;top:8px;font-family:Verdana;font-size:18px;color:#24FF1C;height:550px;"scrollamount="2" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:614.4000000000005px;top:86px;font-family:Verdana;font-size:18px;color:#24FF1C;height:951px;"scrollamount="7" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:537.6000000000006px;top:8px;font-family:Verdana;font-size:18px;color:#24FF1C;height:816px;"scrollamount="7" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:460.8000000000006px;top:79px;font-family:Verdana;font-size:18px;color:#24FF1C;height:403px;"scrollamount="2" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:384.00000000000057px;top:91px;font-family:Verdana;font-size:18px;color:#24FF1C;height:230px;"scrollamount="3" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:307.20000000000056px;top:61px;font-family:Verdana;font-size:18px;color:#24FF1C;height:759px;"scrollamount="6" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:230.40000000000055px;top:24px;font-family:Verdana;font-size:18px;color:#24FF1C;height:976px;"scrollamount="1" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:153.60000000000053px;top:1px;font-family:Verdana;font-size:18px;color:#24FF1C;height:723px;"scrollamount="1" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:76.80000000000054px;top:28px;font-family:Verdana;font-size:18px;color:#24FF1C;height:929px;"scrollamount="5" direction="down">$</marquee>
+   <marquee style="z-index:-1;width:100px;position:absolute;left:5.400124791776761e-13px;top:19px;font-family:Verdana;font-size:18px;color:#24FF1C;height:94px;"scrollamount="5" direction="down">$</marquee>
+   <span style="position:absolute;top:400px"></span>
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
